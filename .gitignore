@@ -1,3 +1,6 @@
 
 requerimientos_de_aprobacion.txt
 /venv
+Datasets/steam_games.json/output_steam_games.json
+Datasets/user_reviews.json/australian_user_reviews.json
+Datasets/users_items.json/australian_users_items.json

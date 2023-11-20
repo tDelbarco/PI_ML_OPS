@@ -1,0 +1,18 @@
+relacion entre columnas
+
+STEAM GAMES = "Genres", "app_name", "id" , "developer"
+
+USER REVIEWS= "user_id", "recommend" , "reviews"
+
+USER ITEMS = "playtime forever", "user_id", "item_id", "item name"
+
+si hay pocos null borrar por ej columna playtime()creo que era
+
+user_id y item_id unir
+
+
+user_id
+
+item_id
+
+app_name

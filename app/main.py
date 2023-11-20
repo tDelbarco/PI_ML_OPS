@@ -10,7 +10,6 @@ async def root():
 
 print("todo se ejecuto")
 
-
 #./venv/Scripts/Activate
 #deactivate
 
