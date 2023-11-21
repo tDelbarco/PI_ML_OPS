@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-app = FastAPI()
 
 app = FastAPI()
+
 
 @app.get("/")
 async def root():
@@ -25,6 +25,7 @@ print("todo se ejecuto")
 #python main.py (hay que correrlo desde dentro de el venv)
 #uvicorn api:app --reload
 
+
 #pip install -r "requirements.txt"
 
 #-------------------------------------------------------------------------------------------------------------------------------------
@@ -32,6 +33,7 @@ print("todo se ejecuto")
 
 @app.get("/PlayTimeGenre")
 async def PlayTimeGenre( genero : str ): #Debe devolver año con mas horas jugadas para dicho género.
+    
     return {}#Ejemplo de retorno: {"Año de lanzamiento con más horas jugadas para Género X" : 2013}
 
 @app.get("/UserForGenre")
