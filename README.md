@@ -1,4 +1,50 @@
-# PI_ML_OPS
+# sistema de recomendacion steam
+
+###hola bienvenido a mi proyecto
+
+#imagen tipo portada mas ancho que larvo para que no ocupe tanto
+
+###el proyecto
+
+###que papel tendre que desempeñar
+en este proyecto debere tomar tanto el papel de data enginer y data scientist.
+asi teniendo que realizar el proceso de extraccion, transformacion y carga de los datos(ETL) , analisis exploratorio de datos(EDA) , y generar un modelo de aprendizaje automatico para la recomendacion de juegos
+para este proyecto se me pide un MVP(minimo producto viable)
+generar una API que pueda ser consumida segun los criterios de API REST o RESTful desde cualquier dispositivo conectado a internet y que cuente con varias consultas.
+
+<!--endpoints(funciones)-->
+<nombre que reciben y que devuelven>
+### consultas / funciones
+*
+*
+*
+*
+*
+
+#las herramientas que utilize fueron las siguientes
+
+#python,pandas,numpy,fast Api,uvicorn,render
+
+###estructura de mi proyecto
+
+PI_ML_OPS
+  /app
+    /
+    data_procesada
+       /steam_games.parquet
+       /user_reviews.parquet
+       /user_itrms.parquet
+    main.py
+    funciones
+   /Datasets
+     /.json.gz
+     /
+     /
+
+  /Dockerfile
+  /.gitignore
+
+
 
 <!--
 Propuesta de trabajo (requerimientos de aprobación)
@@ -29,7 +75,7 @@ Ejemplo de retorno: {'Valve' : [Negative = 182, Neutral = 120, Positive = 278]}
 Importante
 El MVP tiene que ser una API que pueda ser consumida segun los criterios de API REST o RESTful desde cualquier dispositivo conectado a internet. Algunas herramientas como por ejemplo, Streamlit, si bien pueden brindar una interfaz de consulta, no cumplen con las condiciones para ser consideradas una API, sin workarounds.
 
-Deployment: Conoces sobre Render y tienes un tutorial de Render que te hace la vida mas fácil 😄 . También podrías usar Railway, o cualquier otro servicio que permita que la API pueda ser consumida desde la web.
+Deployment: Conoces sobre Render y tienes un tutorial de Render que te hace la vida mas fácil 😄 . 
 
 
 Análisis exploratorio de los datos: (Exploratory Data Analysis-EDA)
