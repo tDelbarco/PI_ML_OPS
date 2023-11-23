@@ -1,7 +1,20 @@
 from fastapi import FastAPI
-
+import numpy as np
+import pandas as pd
 
 app = FastAPI()
+
+
+df_sg = pd.read_parquet("steam_games.parquet")
+
+df_ud = pd.read_parquet("user_data.parquet")
+df_ur = pd.read_parquet("reviews_dict.parquet")
+
+df_ui = pd.read_parquet("users_items.parquet")
+df_dict_ui = pd.read_parquet("uitems.parquet")
+
+
+
 
 
 @app.get("/")
