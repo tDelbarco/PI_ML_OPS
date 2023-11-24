@@ -53,6 +53,12 @@ async def PlayTimeGenre( genero : str ): #Debe devolver año con mas horas jugad
 async def UserForGenre( genero : str ): #Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
     return {} #Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
 
+
+
+
+
+
+
 @app.get("/UsersRecommend")
 async def UsersRecommend( año : int ): #Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos/neutrales)
     return {} #Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
@@ -60,6 +66,8 @@ async def UsersRecommend( año : int ): #Devuelve el top 3 de juegos MÁS recome
 @app.get("/UsersWorstDeveloper")
 async def UsersWorstDeveloper( año : int ): #Devuelve el top 3 de desarrolladoras con juegos MENOS recomendados por usuarios para el año dado. (reviews.recommend = False y comentarios negativos)
     return {} #Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
+
+
 
 @app.get("/sentiment_analysis")
 async def sentiment_analysis( empresa_desarrolladora : str ): #Según la empresa desarrolladora, se devuelve un diccionario con el nombre de la desarrolladora como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor.
