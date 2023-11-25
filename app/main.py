@@ -72,3 +72,5 @@ async def sentiment_analysis( empresa_desarrolladora : str ): #Según la empresa
 #@app.get("/recommendacion_usuario")
 #async def recomendacion_usuario( id_de_usuario : int ): #Ingresando el id de un usuario, deberíamos recibir una lista con 5 juegos recomendados para dicho usuario.
 #    return {}
+
+#uvicorn main:app --reload
