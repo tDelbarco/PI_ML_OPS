@@ -2,11 +2,46 @@ import pandas as pd
 
 
 
-
-
+df_genero = pd.read_parquet("df_genero.parquet")
 df_recommend = pd.read_parquet("df_recommend.parquet")
-
 df_sentimientos = pd.read_parquet("df_sentimientos.parquet")
+
+
+
+
+def horas_año_genero(genero):
+
+    df_hg = df_genero.copy()
+    df_hg = df_hg[df_hg['genres'].str.contains(genero, case=False, na=False)]# Filtra el DataFrame para el género específico
+
+        # Agrupa por año y suma las horas jugadas
+    horas_por_año = df_hg.groupby('release_date')['playtime_forever'].sum()
+
+    año_mas_jugado = horas_por_año.idxmax()
+
+    return str({"Año de lanzamiento con más horas jugadas para Género": genero, "Año más jugado": año_mas_jugado})
+
+
+
+
+def usuario_genero(genero):
+    df_ug = df_genero.copy()  
+    df_filtrado = df_ug[df_ug['genres'].str.contains(genero, case=False, na=False)]
+
+    if df_filtrado.empty:
+        return {"Usuario con más horas jugadas para Género": None, "Horas jugadas": []}
+
+    horas_por_año = (df_filtrado.groupby(['release_date', 'user_id'])['playtime_forever'].sum() / 60).astype(int).reset_index()
+
+    # Encuentra al usuario con más horas jugadas para cada año
+    usuario_mas_jugado_por_año = horas_por_año.loc[horas_por_año.groupby('release_date')['playtime_forever'].idxmax()]
+
+    return str({
+        "Usuario con más horas jugadas para Género": usuario_mas_jugado_por_año.groupby('user_id')['playtime_forever'].sum().idxmax(),
+        "Horas jugadas": [{"Año": año, "Horas": horas} for año, horas in usuario_mas_jugado_por_año.groupby('release_date')['playtime_forever'].sum().items()]
+    }) 
+
+
 
 
 
@@ -28,7 +63,7 @@ def juegos_mas_recomendados(anio):
 
     df_f = df_f.sort_values(by=['recommend_y','sentimiento_y'], ascending=[False, False])
 
-    result_list = [{"Puesto " + str(i + 1): item_id} for i, item_id in enumerate(df_f['item_id'][:3])]
+    result_list = [{"Puesto " + str(i + 1): app_name} for i, app_name in enumerate(df_f['app_name'][:3])]
 
     return result_list
 
