@@ -1,4 +1,14 @@
+import pandas as pd
 
+
+def limpieza_lista(df, columna):
+    """
+    esta funcion es utilizada por la funcion valores listas devuelve una serie de listas
+    """
+    temp = df[columna].copy()
+    temp = temp.str.strip("[]").str.strip("\\'")
+    valores =  temp.str.split(",")
+    return valores                              #devuelve una serie de listas
 
 
 
@@ -39,11 +49,10 @@ def valores_no_numericos(df_col):
 
 
 
-
 def rellenar_comunes(df1,df1col,df2,df2col,comunes):
     """
-    recibe 2 dataframe y el nombre de su columna y una lista de valores comunes si la columna de el primer dataframe esta en "None"(texto) 
-    se verifica si en la segunda columna hay valores que estan en la lista en comun y de haberlos se pasan a la columna de el primer dataframe donde habia "None"
+    recibe 2 dataframe, columna a rellenar(df1col) y columna de donde se va a tomar los valores(df2col)
+      si se cumple que los valores de df2col son valores posibles en la columna a rellenar utilizando comunes(una lista que posee la interseccion entre  los valores de las columnas) 
     """
     for index,row in df1.iterrows():
         if row[df1col] == 'None':
@@ -60,9 +69,8 @@ def rellenar_comunes(df1,df1col,df2,df2col,comunes):
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#esta no laa hice yo
 
-import pandas as pd
+
 
 def data_review(df):
     '''
