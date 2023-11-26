@@ -88,6 +88,8 @@ async def UserForGenre( genero : str ):
 @app.get("/UsersRecommend")
 async def UsersRecommend( año : int ):
     """
+    recibe un año
+
     Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado.
 
     Ejemplo de retorno:
@@ -103,6 +105,8 @@ async def UsersRecommend( año : int ):
 @app.get("/UsersWorstDeveloper")
 async def UsersWorstDeveloper( año : int ):
     """
+    recibe un año
+
     Devuelve el top 3 de desarrolladoras con juegos MENOS recomendados por usuarios para el año dado.
 
     Ejemplo de retorno:
@@ -118,6 +122,8 @@ async def UsersWorstDeveloper( año : int ):
 @app.get("/sentiment_analysis")
 async def sentiment_analysis( empresa_desarrolladora : str ): 
     """
+    recibe el nombre de una empresa
+
     Según la empresa desarrolladora, se devuelve un diccionario con el nombre de la desarrolladora como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor.
 
     Ejemplo de retorno:
@@ -149,10 +155,9 @@ async def sentiment_analysis( empresa_desarrolladora : str ):
 @app.get("/recomendacion_juego")
 async def recomendacion_juego( id_producto : ValorNumericoEnum ): 
     """
-    Devuelve una lista con 5 juegos recomendados similares al ingresado.
+    recibe el id de un juego
 
-    Args:
-        id_producto (int): El ID del producto para el cual se desean obtener recomendaciones.
+    Devuelve una lista con 5 juegos recomendados similares al ingresado.
 
     Returns:
         List[int]: Una lista con los IDs de los juegos recomendados.
