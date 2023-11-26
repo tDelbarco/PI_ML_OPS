@@ -1,16 +1,11 @@
-def limpieza_lista(df, columna):
-    """
-    
-    """
-    temp = df[columna].copy()
-    temp = temp.str.strip("[]").str.strip("\\'")
-    valores =  temp.str.split(",")
-    return valores                              #devuelva una serie de listas
+
+
+
+
 
 def valores_lista(df,columna):
     """
-
-
+    obtiene un df y su columna y devuelve los valores unicos
     """
     valores_gen = limpieza_lista(df,columna) #serie de listas
 
@@ -21,6 +16,9 @@ def valores_lista(df,columna):
     lista_completa = list(set(lista_completa))   #transformamos a set para borrar duplicados
 
     return lista_completa
+
+
+
 
 
 def valores_no_numericos(df_col):
@@ -38,9 +36,14 @@ def valores_no_numericos(df_col):
                 lista.append(i)
     return lista
 
+
+
+
+
 def rellenar_comunes(df1,df1col,df2,df2col,comunes):
     """
-    
+    recibe 2 dataframe y el nombre de su columna y una lista de valores comunes si la columna de el primer dataframe esta en "None"(texto) 
+    se verifica si en la segunda columna hay valores que estan en la lista en comun y de haberlos se pasan a la columna de el primer dataframe donde habia "None"
     """
     for index,row in df1.iterrows():
         if row[df1col] == 'None':
@@ -57,12 +60,13 @@ def rellenar_comunes(df1,df1col,df2,df2col,comunes):
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#esta no laa hice yo
+
 import pandas as pd
-#from textblob import TextBlob
 
 def data_review(df):
     '''
-    This function provides detailed information about the dtype and null values present in a dataframe
+    funcion que recibe un dataframe y devuelve un dataframe con informacion acerca de el dataframe ingresado
     '''
 
     mi_dict = {"Column": [], "dType": [], "No_Null_%": [], "No_Null_Qty": [], "Null_%": [], "Null_Qty": []}
@@ -86,27 +90,3 @@ def data_review(df):
     print("\nTotal duplicated rows:", count_duplicated_rows)
     
     return df_info
-
-def replace_all_nulls(df):
-    '''
-    Recieves a df as parameter and fill all the null values per column depending on their dType
-    '''
-
-    for column in df.columns:
-        mask = df[column].notnull()
-        dtype = df[column][mask].apply(type).unique()
-
-        if dtype[0] == str:
-            df[column] = df[column].fillna('No data')
-        if dtype[0] == float:
-            mean = df[column].mean()
-            df[column] = df[column].fillna(mean)
-
-#def get_sentiment(review):
-#    analysis = TextBlob(review)
-#    if analysis.sentiment.polarity < 0:
-#        return 0
-#    elif analysis.sentiment.polarity == 0:
-#        return 1
-#    else:
-#        return 2
