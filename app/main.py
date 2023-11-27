@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from starlette.responses import RedirectResponse
 import functions.modelo as ml
 import numpy as np
 import pandas as pd
@@ -11,7 +12,8 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return "¡Hola FastAPI!"
+    url_destino = "/docs"
+    return RedirectResponse(url_destino)
 
 
 
