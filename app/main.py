@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from starlette.responses import RedirectResponse
 import functions.modelo as ml
-import numpy as np
-import pandas as pd
+#import numpy as np
+#import pandas as pd
 import functions.funciones as f
 from enum import Enum
 
