@@ -67,19 +67,17 @@ async def PlayTimeGenre( genero : str ):
 
 
 
+@app.get("/UserForGenre/")
+async def UserForGenre( genero : str ): 
+    """
+    recibe un genero
 
-#@app.get("/UserForGenre/")
-#async def UserForGenre( genero : str ): 
-#    """
-#    recibe un genero
-#
-#    Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
-#
-#    Ejemplo de retorno:
-#    {"Usuario con más horas jugadas para Género X": "us213ndjss09sdf", "Horas jugadas": [{"Año": 2013, "Horas": 203}, {"Año": 2012, "Horas": 100}, {"Año": 2011, "Horas": 23}]}
-#    """
-#    return f.usuario_genero(genero) 
+    Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
 
+    Ejemplo de retorno:
+    {"Usuario con más horas jugadas para Género X": "us213ndjss09sdf", "Horas jugadas": [{"Año": 2013, "Horas": 203}, {"Año": 2012, "Horas": 100}, {"Año": 2011, "Horas": 23}]}
+    """
+    return f.usuario_genero(genero) 
 
 
 
