@@ -7,7 +7,7 @@ import functions.funciones as f
 from enum import Enum
 
 
-app = FastAPI(_debug=True)
+app = FastAPI()
 
 
 @app.get("/")
