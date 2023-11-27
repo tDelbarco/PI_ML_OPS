@@ -9,37 +9,71 @@ df_sentimientos = pd.read_parquet("df_sentimientos.parquet")
 
 
 
+
+
 def horas_año_genero(genero):
+    # Filtra el DataFrame para el género específico
+    df_hg = df_genero[df_genero['genres'].str.contains(genero, case=False, na=False)]
 
-    #df_hg = df_genero.copy()#copio el dataframe ya que me causa problemas con el original sino
-    df_hg = df_genero[df_genero['genres'].str.contains(genero, case=False, na=False)]# Filtra el DataFrame para el género específico
+    # Agrupa por año y suma las horas jugadas, luego encuentra el año con más horas jugadas
+    max_year = df_hg.groupby('release_date')['playtime_forever'].sum().idxmax()
 
-    df_hg = df_hg.groupby('release_date')['playtime_forever'].sum()# Agrupa por año y suma las horas jugadas
+    return str({"Año de lanzamiento con más horas jugadas para Género": genero, "Año más jugado": max_year})
 
-    df_hg = df_hg.idxmax()#obtengo el año con mas horas jugadas
 
-    return str({"Año de lanzamiento con más horas jugadas para Género": genero, "Año más jugado": df_hg})
 
+
+#
+#def horas_año_genero(genero):
+#
+#    df_hg = df_genero.copy()#copio el dataframe ya que me causa problemas con el original sino
+#    df_hg = df_genero[df_genero['genres'].str.contains(genero, case=False, na=False)]# Filtra el DataFrame para el género específico
+#
+#    df_hg = df_hg.groupby('release_date')['playtime_forever'].sum()# Agrupa por año y suma las horas jugadas
+#
+#    df_hg = df_hg.idxmax()#obtengo el año con mas horas jugadas
+#
+#    return str({"Año de lanzamiento con más horas jugadas para Género": genero, "Año más jugado": df_hg})
+#
 
 
 
 def usuario_genero(genero):
-    df_ug = df_genero.copy()  #copio el dataframe ya que me causa problemas con el original sino
-    df_ug = df_ug[df_ug['genres'].str.contains(genero, case=False, na=False)]
+    # Filtra el DataFrame para el género específico
+    df_ug = df_genero[df_genero['genres'].str.contains(genero, case=False, na=False)]
 
-    if df_ug.empty:#verifica si el df_ug no me dio vacio
-        return {"Usuario con más horas jugadas para Género": None, "Horas jugadas": []}#en caso de que el df_ug este vacio retorna esto
+    if df_ug.empty:  # Verifica si el df_ug no es vacío
+        return str({"Usuario con más horas jugadas para Género": None, "Horas jugadas": []})  # En caso de que el df_ug esté vacío, retorna esto
 
-    horas_por_año = (df_ug.groupby(['release_date', 'user_id'])['playtime_forever'].sum() / 60).astype(int).reset_index()# Calcular las horas jugadas por año y usuario (dividimos el tiempo en minutos por 60 para obtener las horas)
+    # Calcular las horas jugadas por año y usuario (dividimos el tiempo en minutos por 60 para obtener las horas)
+    horas_por_año = (df_ug.groupby(['release_date', 'user_id'])['playtime_forever'].sum() / 60).astype(int).reset_index()
 
-    
-    usuario_mas_jugado_por_año = horas_por_año.loc[horas_por_año.groupby('release_date')['playtime_forever'].idxmax()]# Encuentro al usuario con más horas jugadas por año
+    # Encuentra al usuario con más horas jugadas por año
+    usuario_mas_jugado_por_año = horas_por_año.loc[horas_por_año.groupby('release_date')['playtime_forever'].idxmax()]
 
     return str({
-        "Usuario con más horas jugadas para Género": usuario_mas_jugado_por_año["user_id"].idxmax(),
+        "Usuario con más horas jugadas para Género": usuario_mas_jugado_por_año.loc[usuario_mas_jugado_por_año['playtime_forever'].idxmax(), 'user_id'],
         "Horas jugadas": [{"Año": año, "Horas": horas} for año, horas in usuario_mas_jugado_por_año.groupby('release_date')['playtime_forever'].sum().items()]
-    }) #diccionario que contiene el genero y una lista con las horas jugadas por año por el usuario que mas jugo al genero
+    })  # Diccionario que contiene el género y una lista con las horas jugadas por año por el usuario que más jugó al género
 
+
+#def usuario_genero(genero):
+#    df_ug = df_genero.copy()  #copio el dataframe ya que me causa problemas con el original sino
+#    df_ug = df_ug[df_ug['genres'].str.contains(genero, case=False, na=False)]
+#
+#    if df_ug.empty:#verifica si el df_ug no me dio vacio
+#        return {"Usuario con más horas jugadas para Género": None, "Horas jugadas": []}#en caso de que el df_ug este vacio retorna esto
+#
+#    horas_por_año = (df_ug.groupby(['release_date', 'user_id'])['playtime_forever'].sum() / 60).astype(int).reset_index()# Calcular las horas jugadas por año y usuario (dividimos el tiempo en minutos por 60 para obtener las horas)
+#
+#    
+#    usuario_mas_jugado_por_año = horas_por_año.loc[horas_por_año.groupby('release_date')['playtime_forever'].idxmax()]# Encuentro al usuario con más horas jugadas por año
+#
+#    return str({
+#        "Usuario con más horas jugadas para Género": usuario_mas_jugado_por_año["user_id"].idxmax(),
+#        "Horas jugadas": [{"Año": año, "Horas": horas} for año, horas in usuario_mas_jugado_por_año.groupby('release_date')['playtime_forever'].sum().items()]
+#    }) #diccionario que contiene el genero y una lista con las horas jugadas por año por el usuario que mas jugo al genero
+#
 
 
 
