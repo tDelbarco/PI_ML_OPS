@@ -171,4 +171,13 @@ async def recomendacion_juego( id_producto : ValorNumericoEnum ):
 ##Si es un sistema de recomendación user-item:
 #@app.get("/recommendacion_usuario")
 #async def recomendacion_usuario( id_de_usuario : int ): #Ingresando el id de un usuario, deberíamos recibir una lista con 5 juegos recomendados para dicho usuario.
+#    """
+#    Recibe el ID de un usuario y devuelve una lista con 5 juegos recomendados para dicho usuario.
+#
+#    Args:
+#        id_usuario (int): El ID del usuario.
+#
+#    Returns:
+#        List[int]: Una lista con los IDs de los juegos recomendados.
+#    """
 #    return {}

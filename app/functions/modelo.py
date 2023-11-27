@@ -38,3 +38,10 @@ def obtener_recomendaciones(item_id_ingresado, n=5):
     juegos_recomendados = df_muestra.loc[indices_similares, 'app_name'].tolist()
 
     return str({"recomendaciones": juegos_recomendados})
+
+
+
+
+
+#from sklearn.metrics.pairwise import cosine_similarity
+
