@@ -57,6 +57,7 @@ def usuario_genero(genero):
     })  # Diccionario que contiene el género y una lista con las horas jugadas por año por el usuario que más jugó al género
 
 
+
 #def usuario_genero(genero):
 #    df_ug = df_genero.copy()  #copio el dataframe ya que me causa problemas con el original sino
 #    df_ug = df_ug[df_ug['genres'].str.contains(genero, case=False, na=False)]
