@@ -18,7 +18,7 @@ def horas_año_genero(genero):
 
     df_hg = df_hg.idxmax()#obtengo el año con mas horas jugadas
 
-    return str({"Año de lanzamiento con más horas jugadas para Género": genero, "Año más jugado": año_mas_jugado})
+    return str({"Año de lanzamiento con más horas jugadas para Género": genero, "Año más jugado": df_hg})
 
 
 
