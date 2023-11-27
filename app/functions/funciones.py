@@ -11,8 +11,8 @@ df_sentimientos = pd.read_parquet("df_sentimientos.parquet")
 
 def horas_año_genero(genero):
 
-    df_hg = df_genero.copy()#copio el dataframe ya que me causa problemas con el original sino
-    df_hg = df_hg[df_hg['genres'].str.contains(genero, case=False, na=False)]# Filtra el DataFrame para el género específico
+    #df_hg = df_genero.copy()#copio el dataframe ya que me causa problemas con el original sino
+    df_hg = df_genero[df_genero['genres'].str.contains(genero, case=False, na=False)]# Filtra el DataFrame para el género específico
 
     df_hg = df_hg.groupby('release_date')['playtime_forever'].sum()# Agrupa por año y suma las horas jugadas
 
