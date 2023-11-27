@@ -1,78 +1,103 @@
-# sistema de recomendacion steam
+<p align=center><img src=https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png><p>
 
-## hola bienvenido a mi proyecto
+# <h1 align=center> **PROYECTO INDIVIDUAL Nº1** </h1>
+
+# <h1 align=center>**`Machine Learning Operations (MLOps)`**</h1>
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/67664604/217914153-1eb00e25-ac08-4dfa-aaf8-53c09038f082.png"  height=300>
+</p>
+
+# hola bienvenido a mi proyecto
+### el proyecto
+
+en este proyecto que tiene como tematica steam() debere tomar tanto el papel de **data enginer** y **data scientist**.
+asi teniendo que realizar el proceso de **extraccion**, **transformacion** y **carga de los datos**(**ETL**) , analisis exploratorio de datos(**EDA**) , y generar un modelo de aprendizaje automatico para la recomendacion de juegos
+para este proyecto se me pide un **MVP**(minimo producto viable)
+generar una API que pueda ser consumida segun los criterios de **API REST** o **RESTful** desde cualquier dispositivo conectado a internet y que cuente con varias consultas.
+
+### las herramientas que utilize fueron las siguientes
+
+# python,pandas,numpy,fast Api,uvicorn,render
+
+<h1>Índice de Navegación</h1>
+
+<ul>
+    <li><a href="#seccion1">Acceso a la api a travez de render y video demostracion de su funcionamiento</a></li>
+    <li><a href="#seccion2">Estructura de el proyecto</a></li>
+    <li><a href="#seccion3">posibles consultas a la api</a></li>
+    <li><a href="#seccion4">Como ejecutar la api de forma local</a></li>
+    <li><a href="#seccion5">Contactame a travez de :</a></li>
+</ul>
 
 
-<img src="https://camo.githubusercontent.com/35b81f213ddb0e019b3567f6982d740bb2d01ae5dd712a1537e09e826e940228/68747470733a2f2f643331757a386c77666d796e38672e636c6f756466726f6e742e6e65742f4173736574732f6c6f676f2d68656e72792d77686974652d6c672e706e67" style="width:50%">
-#imagen tipo portada mas ancho que larvo para que no ocupe tanto
 
-###el proyecto
+<section id="seccion1">
 
-###que papel tendre que desempeñar
-en este proyecto debere tomar tanto el papel de data enginer y data scientist.
-asi teniendo que realizar el proceso de extraccion, transformacion y carga de los datos(ETL) , analisis exploratorio de datos(EDA) , y generar un modelo de aprendizaje automatico para la recomendacion de juegos
-para este proyecto se me pide un MVP(minimo producto viable)
-generar una API que pueda ser consumida segun los criterios de API REST o RESTful desde cualquier dispositivo conectado a internet y que cuente con varias consultas.
+  <h2><a href="https://pi-ml-ops-c1ks.onrender.com/docs#/">LINK</a> de la api deployada en render</h2>
+  <p><a href="https://pi-ml-ops-c1ks.onrender.com/docs#/">https://pi-ml-ops-c1ks.onrender.com/docs#/</a></p>
 
-## la api
+  <h2><a href="#">LINK</a> de video demostracíon</h2>
+  <p><a href="#">https://pi-ml-ops-c1ks.onrender.com/docs#/</a></p>
+</section>
 
-#las herramientas que utilize fueron las siguientes
+<section id="seccion2">
+  <h1>estructura de mi proyecto</h1>
+  <p>
+    en esta seccion hago un resumen de las carpetas y archivos (sus propositos) en este repositorio de github:
+  </p>
+</section>
 
-#python,pandas,numpy,fast Api,uvicorn,render
 
-### estructura de mi proyecto
 
 	|-- PI_ML_Ops/                # Carpeta raíz del repositorio de GitHub
 
-        	|-- Datasets/             # Almacena los archivos JSON comprimidos con los datos
+        	|-- Datasets/             # Almacena los archivos JSON comprimidos con los datos(tambien posee cualquier otro archivo resultante a partir de estos que no sea directamente utilizado por la api)
 	 
-        		|-- steam_games.json.gz
+        	  	|-- steam_games.json.gz
         
-	  		|-- user_reviews.json.gz
+	  		      |-- user_reviews.json.gz
         		
-	  		|-- user_items.json.gz
+	  		      |-- user_items.json.gz
     		
       		|-- app/                  # Contiene los archivos esenciales para la API
         	
-	  		|-- main.py           # Archivo principal de la aplicación FastAPI
+	  		      |-- main.py           # Archivo principal de la aplicación FastAPI
         		
-	  		|-- funciones/        # Módulo con funciones auxiliares para la API
+	  		      |-- funciones/        # Módulo con funciones auxiliares para la API
             		
-	       			|-- funciones.py  # Funciones de manipulación y procesamiento de datos
+	       			    |-- funciones.py  # Funciones de manipulación y procesamiento de datos
             			
-	       			|-- modelo.py      # Implementación del modelo de machine learning
+	       			    |-- modelo.py      # Implementación del modelo de machine learning
         		
-	  		|-- df_sentimiento.parquet  # Archivo de datos parquet para análisis de sentimiento
-        		
-	  		|-- df_recommend.parquet    # Archivo de datos parquet para recomendaciones
-       			
-	  		|-- df_genero.parquet       # Archivo de datos parquet para géneros de juegos
-        		
-	  		|-- df_modelo.parquet       # Archivo de datos parquet para el modelo entrenado
-        		
-	  		|-- requirements.txt        # Archivo de dependencias del proyecto
+	  		      |-- df_sentimientos.parquet  # Archivo de datos parquet utilizado para la respuesta de la api a la consulta de (sentiment_analysis)
+
+	  		      |-- df_recommend.parquet    # Archivo de datos parquet utilizado para la respuesta de la api a las consultas de (UsersRecommend y UsersWorstDeveloper)
+
+	  		      |-- df_genero.parquet       # Archivo de datos parquet utilizado para la respuesta de la api a las consultas de (PlayTimeGenre y UserForGenre)
+
+	  		      |-- df_modelo.parquet       # Archivo de datos parquet utilizado para la respuesta de la api a la recommendacion de juegos (recomendacion_juego)
+
+	  		      |-- requirements.txt        # Archivo de dependencias del proyecto (este posee todas las librerias necesarias para ejecutar la api)
     		
-      		|-- venv/                 # Entorno virtual para pruebas locales
+      		|-- venv/                 # Entorno virtual para pruebas locales(tambien fue utilizado para generar el requirements.txt)
     		
-      		|-- ETL/                  # Carpeta que contiene el proceso de manipulación de datos
+      		|-- ETL_&_EDA/                  # Carpeta que contiene el proceso de manipulación de datos
         	
-	  		|-- ETL.ipynb        # Jupyter Notebook para el proceso ETL
+	        		|-- ETL.ipynb        # Jupyter Notebook para el proceso ETL(extraccion, transformacion y carga de datos)
         	
-	 		|-- EDA.ipynb        # Jupyter Notebook para el Análisis Exploratorio de Datos
+	 	        	|-- EDA.ipynb        # Jupyter Notebook para el Análisis Exploratorio de Datos
         	
-	 	|-- ETL_functions.ipynb  # Jupyter Notebook con funciones específicas para el ETL
+	 	            |-- ETL_functions.ipynb  # Jupyter Notebook con funciones específicas para el ETL
 
 
 
 
 
 
-Sistema de Recomendación Steam
-¡Hola, bienvenido a mi proyecto!
-Imagen de Portada <!-- Reemplaza "url_de_la_imagen" con la URL de tu imagen de portada -->
 
-El Proyecto
-En este proyecto, asumiré los roles de Data Engineer y Data Scientist. Mi tarea principal será realizar el proceso de Extracción, Transformación y Carga de datos (ETL), así como realizar un Análisis Exploratorio de Datos (EDA) y desarrollar un modelo de aprendizaje automático para la recomendación de juegos. El objetivo es crear un MVP (Mínimo Producto Viable) que consista en una API accesible desde cualquier dispositivo conectado a internet, con consultas y funciones específicas.
+<section id="seccion3">
+
 
 Consultas / Funciones
 PlayTimeGenre(genero: str):
@@ -95,28 +120,6 @@ sentiment_analysis(empresa_desarrolladora: str):
 
 Según la empresa desarrolladora, devuelve un diccionario con el nombre de la desarrolladora como llave y una lista con la cantidad total de registros de reseñas de usuarios categorizados con un análisis de sentimiento como valor.
 Ejemplo de retorno: {'Valve' : [Negative = 182, Neutral = 120, Positive = 278]}
-Herramientas Utilizadas
-Python
-Pandas
-NumPy
-FastAPI
-Uvicorn
-Render (Plataforma de implementación)
-Este proyecto se enfoca en la creación de una API robusta y funcional que cumple con los estándares RESTful y puede ser consumida de manera eficiente desde cualquier dispositivo conectado a internet. ¡Gracias por explorar mi proyecto! Si tienes alguna pregunta o necesitas más información, no dudes en contactarme.
-
-pasos para deployar de forma local 
-
-forkear el repositorio
-
-./venv/Scripts/Activate(esto desde el directorio raiz de el el prouecto PI_ML_OPS)
-
-cd app
-
-uvicorn main:app --reload
-
-ctrl + c
-
-deactivate
 
 
 
@@ -126,7 +129,44 @@ deactivate
 
 
 
+</section>
 
+
+
+
+
+
+<section id="seccion4">
+    <h2>instrucciones para deployear la api de forma local</h2>
+    <p>en caso de querer ejecutar esta api de forma local una vez forkeado el repositorio(windows):</p>
+    <p>se debe abrir una consola de comandos en la ruta dentro de la carpeta PI_ML_OPS:</p>
+    <code>./venv/Scripts/Activate</code>
+    <p>con esto debera salir(venv) al principio de la ruta esto significa que el entorno virtual se encuentra activo</p>
+    <p>ahora debemos entrar dentro de la carpeta app que es aquella que tiene la api en si</p>
+    <code>cd app</code>
+    <p>una vez dentro de el directorio app</p>
+    <code>uvicorn main:app --reload</code>
+    <p>con esto ya tendriamos nuestra api corriendo de forma local en el el puerto 8000 y podemos acceder a ella a travez de <a href="localhost:8000">localhost:8000</a></p>
+    <p>en caso de detener el funcionamiento de la api</p>
+    <code>ctrl + c</code>
+    <p>en caso de querer desactivar el entorno virtual</p>
+    <code>deactivate</code>
+</section>
+
+
+
+
+
+
+<section id="seccion5">
+  contactame en:
+
+  link github
+
+  link linkedin
+
+
+</section>
 
    
 
