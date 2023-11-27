@@ -35,10 +35,10 @@ def usuario_genero(genero):
     
     usuario_mas_jugado_por_año = horas_por_año.loc[horas_por_año.groupby('release_date')['playtime_forever'].idxmax()]# Encuentro al usuario con más horas jugadas por año
 
-    return {
+    return str({
         "Usuario con más horas jugadas para Género": usuario_mas_jugado_por_año["user_id"].idxmax(),
         "Horas jugadas": [{"Año": año, "Horas": horas} for año, horas in usuario_mas_jugado_por_año.groupby('release_date')['playtime_forever'].sum().items()]
-    } #diccionario que contiene el genero y una lista con las horas jugadas por año por el usuario que mas jugo al genero
+    }) #diccionario que contiene el genero y una lista con las horas jugadas por año por el usuario que mas jugo al genero
 
 
 
