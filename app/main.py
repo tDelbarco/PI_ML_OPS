@@ -22,30 +22,20 @@ async def root():
 
 
 class ValorNumericoEnum(int, Enum):#lista de algunos de los valores posibles de el campo de recomendacion de juegos
+    payday_shadow_raid_heist = 267382
+    tales_of_zestiria_costumes_set = 382464
+    driver_pro_2017 = 710540
+    rpg_maker_casino_tile_pack = 283541
+    total_war_rome_ii_culture_pack = 273381
+    wwe_2k18_myplayer_kick_start = 706080
+    yugioh_duel_links = 601510
     motogp_13_champions = 240612
     euro_truck_simulator_raven_pack = 318521
     warhammer_space_wolf_great_awakening = 760720
     hunter_x_hunter = 545630
     final_fantasy_vi = 382900
     berserk_golden_age_arc_ii = 464420
-    gotham_city_impostors_beaky = 216450
-    inuyasha_movie_affections = 488370
-    euro_truck_simulator_going_east = 227310
-    lego_pirates_caribbean = 311770
-    payday_shadow_raid_heist = 267382
     star_wars_tie_fighter = 355250
-    tales_of_zestiria_costumes_set = 382464
-    driver_pro_2017 = 710540
-    rpg_maker_casino_tile_pack = 283541
-    castlevania_mirror_of_fate_hd = 282530
-    lego_marvel_super_heroes_2_guardians = 720690
-    battle_of_empires_blazing_guns = 340620
-    total_war_rome_ii_culture_pack = 273381
-    call_of_duty_rezurrection_mac = 214649
-    wwe_2k18_myplayer_kick_start = 706080
-    yugioh_duel_links = 601510
-
-
 
 
 
@@ -55,7 +45,7 @@ class ValorNumericoEnum(int, Enum):#lista de algunos de los valores posibles de 
 @app.get("/PlayTimeGenre/{genero}")
 async def PlayTimeGenre( genero : str ):
     """
-    recibe un genero
+    recibe un genero (no diferencia entre mayusculas y minusculas)
 
     Devuelve el año con más horas jugadas para el género dado.
 
@@ -64,6 +54,9 @@ async def PlayTimeGenre( genero : str ):
 
     ----------------------------------------------------------------
     este endpoint puede tardar un rato 
+
+    algunos de los valores posibles son:
+    (Sports,Strategy,Action,Adventure,Indie,RPG,Simulation,Design,Education,&amp,Casual,Racing)
     """
     return f.horas_año_genero(genero)
 
@@ -74,21 +67,28 @@ async def PlayTimeGenre( genero : str ):
 async def UserForGenre( genero : str ): 
     """
     ------------------------------------------------------------------------------
-    importante este endpoint no devuelve correctamente ya que no pude optimizarlo 
+    IMPORTANTE este endpoint no devuelve correctamente ya que no pude optimizarlo
+    asi que los valores que devuelve son la funcion aplicada a una muestra random
+    de los datos por lo que no se puede considerar valores correctos 
     ------------------------------------------------------------------------------
-    recibe un genero
+    recibe un genero (no diferencia entre mayusculas y minusculas)
 
     Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
 
     Ejemplo de retorno:
     {"Usuario con más horas jugadas para Género X": "us213ndjss09sdf", "Horas jugadas": [{"Año": 2013, "Horas": 203}, {"Año": 2012, "Horas": 100}, {"Año": 2011, "Horas": 23}]}
+    -------------------------------------------------------------------------------
+        este endpoint puede tardar un rato 
+
+    algunos de los valores posibles son:
+    (Sports,Strategy,Action,Adventure,Indie,RPG,Simulation,Design,Education,&amp,Casual,Racing)
     """
     return f.usuario_genero(genero) 
 
 
 
 
-#Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos/neutrales)
+
 @app.get("/UsersRecommend")
 async def UsersRecommend( año : int ):
     """
@@ -98,6 +98,12 @@ async def UsersRecommend( año : int ):
 
     Ejemplo de retorno:
     [{"Puesto 1": X}, {"Puesto 2": Y}, {"Puesto 3": Z}]
+
+    -------------------------------------------------------------------------------
+    IMPORTANTE se esperan valores de año entre 2010 y 2015
+    ya que solo hay datos de recommendaciones y reviews para juegos de estos años
+    -------------------------------------------------------------------------------
+
     """
     return f.juegos_mas_recomendados(año)
 
@@ -105,7 +111,6 @@ async def UsersRecommend( año : int ):
 
 
 
-#Devuelve el top 3 de desarrolladoras con juegos MENOS recomendados por usuarios para el año dado. (reviews.recommend = False y comentarios negativos)
 @app.get("/UsersWorstDeveloper")
 async def UsersWorstDeveloper( año : int ):
     """
@@ -115,6 +120,11 @@ async def UsersWorstDeveloper( año : int ):
 
     Ejemplo de retorno:
     [{"Puesto 1": X}, {"Puesto 2": Y}, {"Puesto 3": Z}]
+    -------------------------------------------------------------------------------
+    IMPORTANTE se esperan valores de año entre 2010 y 2015
+    ya que solo hay datos de recommendaciones y reviews para juegos de estos años
+    -------------------------------------------------------------------------------
+
     """
     return f.developer_menos_recomendadas(año)
 
@@ -126,12 +136,15 @@ async def UsersWorstDeveloper( año : int ):
 @app.get("/sentiment_analysis")
 async def sentiment_analysis( empresa_desarrolladora : str ): 
     """
-    recibe el nombre de una empresa
+    recibe el nombre de una empresa(distinge entre minusculas y mayusculas el valor debe ser ingresado de forma correcta)
 
     Según la empresa desarrolladora, se devuelve un diccionario con el nombre de la desarrolladora como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor.
 
     Ejemplo de retorno:
     {'Valve': {'Negative': 182, 'Neutral': 120, 'Positive': 278}}
+    ---------------------------------------------------------------------------------
+    algunos de los posibles valores[estan separados por | ya que algunos poseen comas] (Tripwire Interactive|ACE Team|SCS Software|3909|Hopoo Games, LLC|Zachtronics|Supergiant Games|Phr00t's Software|MinMax Games Ltd.|Robotronic Games|Telltale Games|CD PROJEKT RED|Rockstar Studios|Trion Worlds, Inc.|Remedy Entertainment|FromSoftware|Chucklefish|Valve|Ronimo Games|Traveller's Tales|Trendy Entertainment|Psyonix, Inc.|Smartly Dressed Games|Facepunch Studios|Arrowhead Game Studios|Legend Studio|Capcom U.S.A., Inc.|SkyGoblin|SkyGoblin)
+
     """
     return f.contar_sentimientos_por_desarrollador(empresa_desarrolladora)
 
@@ -159,12 +172,44 @@ async def sentiment_analysis( empresa_desarrolladora : str ):
 @app.get("/recomendacion_juego")
 async def recomendacion_juego( id_producto : ValorNumericoEnum ): 
     """
-    recibe el id de un juego
+    recibe el id de un juego(lista ya predefinida ya que los id de juegos pueden ser numeros muy complejos para memorizar y puede que un numero ingresado no este en la muestra)
 
     Devuelve una lista con 5 juegos recomendados similares al ingresado.
 
     Returns:
         List[int]: Una lista con los IDs de los juegos recomendados.
+
+    -------------------------------------------------------------------------------------------
+    algunos de los valores y sus nombres de juego
+
+    payday_shadow_raid_heist = 267382
+
+    tales_of_zestiria_costumes_set = 382464
+
+    driver_pro_2017 = 710540
+    
+    rpg_maker_casino_tile_pack = 283541
+    
+    total_war_rome_ii_culture_pack = 273381
+    
+    wwe_2k18_myplayer_kick_start = 706080
+    
+    yugioh_duel_links = 601510
+
+    motogp_13_champions = 240612
+
+    euro_truck_simulator_raven_pack = 318521
+
+    warhammer_space_wolf_great_awakening = 760720
+
+    hunter_x_hunter = 545630
+
+    final_fantasy_vi = 382900
+    
+    berserk_golden_age_arc_ii = 464420
+    
+    star_wars_tie_fighter = 355250
+
     """
     return ml.obtener_recomendaciones(id_producto)
 
