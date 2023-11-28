@@ -53,13 +53,13 @@ generar una API que pueda ser consumida segun los criterios de **API REST** o **
 
         	|-- Datasets/             # Almacena los archivos JSON comprimidos con los datos(tambien posee cualquier otro archivo resultante a partir de estos que no sea directamente utilizado por la api)
 	 
-        	  	|-- steam_games.json.gz
+        	  	      |-- steam_games.json.gz
         
 	  		      |-- user_reviews.json.gz
         		
 	  		      |-- user_items.json.gz
     		
-      		|-- app/                  # Contiene los archivos esenciales para la API
+      	|-- app/                  # Contiene los archivos esenciales para la API
         	
 	  		      |-- main.py           # Archivo principal de la aplicación FastAPI
         		
@@ -79,15 +79,15 @@ generar una API que pueda ser consumida segun los criterios de **API REST** o **
 
 	  		      |-- requirements.txt        # Archivo de dependencias del proyecto (este posee todas las librerias necesarias para ejecutar la api)
     		
-      		|-- venv/                 # Entorno virtual para pruebas locales(tambien fue utilizado para generar el requirements.txt)
+      	|-- venv/                 # Entorno virtual para pruebas locales(tambien fue utilizado para generar el requirements.txt)
     		
-      		|-- ETL_&_EDA/                  # Carpeta que contiene el proceso de manipulación de datos
+      	|-- ETL_&_EDA/                  # Carpeta que contiene el proceso de manipulación de datos
         	
 	        		|-- ETL.ipynb        # Jupyter Notebook para el proceso ETL(extraccion, transformacion y carga de datos)
         	
 	 	        	|-- EDA.ipynb        # Jupyter Notebook para el Análisis Exploratorio de Datos
         	
-	 	            |-- ETL_functions.ipynb  # Jupyter Notebook con funciones específicas para el ETL
+	 	            	|-- ETL_functions.ipynb  # Jupyter Notebook con funciones específicas para el ETL
 
 
 
