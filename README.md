@@ -7,7 +7,7 @@
 <h1 align=center>Índice de Navegación</h1>
 
 <ul align=center>
-    <li><a href="#seccion1">Acceso a la api a travez de render y video demostracion de su funcionamiento</a></li>
+    <li><a href="#seccion1">Acceso a la api a traves de render</a></li>
     <li><a href="#seccion2">Estructura de el proyecto</a></li>
     <li><a href="#seccion3">posibles consultas a la api</a></li>
     <li><a href="#seccion4">Como ejecutar la api de forma local</a></li>
@@ -36,9 +36,6 @@ generar una API que pueda ser consumida segun los criterios de **API REST** o **
 
   <h2><a href="https://pi-ml-ops-c1ks.onrender.com/docs#/">LINK</a> de la api deployada en render</h2>
   <p><a href="https://pi-ml-ops-c1ks.onrender.com/docs#/">https://pi-ml-ops-c1ks.onrender.com/docs#/</a></p>
-
-  <h2><a href="#">LINK</a> de video demostracíon</h2>
-  <p><a href="#">https://pi-ml-ops-c1ks.onrender.com/docs#/</a></p>
 </section>
 
 <hr>
