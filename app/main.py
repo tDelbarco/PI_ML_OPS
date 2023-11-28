@@ -61,6 +61,9 @@ async def PlayTimeGenre( genero : str ):
 
     Ejemplo de retorno:
     {"Año de lanzamiento con más horas jugadas para Género X": 2013}
+
+    ----------------------------------------------------------------
+    este endpoint puede tardar un rato 
     """
     return f.horas_año_genero(genero)
 
@@ -70,6 +73,9 @@ async def PlayTimeGenre( genero : str ):
 @app.get("/UserForGenre/")
 async def UserForGenre( genero : str ): 
     """
+    ------------------------------------------------------------------------------
+    importante este endpoint no devuelve correctamente ya que no pude optimizarlo 
+    ------------------------------------------------------------------------------
     recibe un genero
 
     Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
